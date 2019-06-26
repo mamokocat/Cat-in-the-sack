@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Cat_in_the_sack.Models.Movy>
+@{
+    ViewBag.Title = "WatchResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@foreach(Cat_in_the_sack.Models.Movy movie in Model)
+{
+    <p>@movie.Title</p>
+    <br />
+}
+
