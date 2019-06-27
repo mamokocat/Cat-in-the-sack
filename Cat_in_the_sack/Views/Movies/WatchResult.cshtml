@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<Cat_in_the_sack.Models.Movy>
 @{
-    ViewBag.Title = "WatchResult";
+    ViewBag.Title = "Cat in the sack";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div style="text-align: center; margin: 0px auto">
+    <div style="font-size: 40px; color: #4c566c; opacity: 0.6; margin-bottom: 60px">You'll spend your evening watching...</div>
+    <div style="font-size: 50px; color: #6B8BD6; font-weight: 800">@ViewBag.ResultMovie ?</div>
+</div>
+   
 
-@foreach(Cat_in_the_sack.Models.Movy movie in Model)
-{
-    <p>@movie.Title</p>
-    <br />
-}
 

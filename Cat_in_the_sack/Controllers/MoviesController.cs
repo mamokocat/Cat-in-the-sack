@@ -14,15 +14,30 @@ namespace Cat_in_the_sack.Controllers
     {
         private MoviesEntities1 db = new MoviesEntities1();
 
+
+
+
         // GET: Movies
         public ActionResult Index()
         {
-            return View(db.Movies.ToList());
+            return View();
         }
 
-        public ActionResult WatchResult()
+        public ActionResult WatchResult(string genre)
         {
-            return View(db.Movies.ToList());
+            string title="";
+            Random rndMovieIndex = new Random();
+            while (String.IsNullOrEmpty(title))
+            {
+
+                Movy movie = db.Movies.ToList().ElementAt(rndMovieIndex.Next(1, db.Movies.ToList().Count()));
+                if( (movie.Genre==genre || genre=="Random" ) && movie.IsWatched==0)
+                {
+                    title = movie.Title;
+                }
+            }
+            ViewBag.ResultMovie = title;
+            return View();
         }
 
         // GET: Movies/Details/5
