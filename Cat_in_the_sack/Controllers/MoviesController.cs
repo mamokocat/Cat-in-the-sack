@@ -40,6 +40,22 @@ namespace Cat_in_the_sack.Controllers
             return View();
         }
 
+        public string ChooseFilm(string genre)
+        {
+            string title = "";
+            Random rndMovieIndex = new Random();
+            while (String.IsNullOrEmpty(title))
+            {
+
+                Movy movie = db.Movies.ToList().ElementAt(rndMovieIndex.Next(1, db.Movies.ToList().Count()));
+                if ((movie.Genre == genre || genre == "Random") && movie.IsWatched == 0)
+                {
+                    title = movie.Title;
+                }
+            }
+            return title;
+        }
+
         // GET: Movies/Details/5
         public ActionResult Details(int? id)
         {
