@@ -25,6 +25,10 @@ h1{
     font-size: 60px;
 }
 
+h1:hover{
+    cursor: pointer;
+}
+
 a {
     text-decoration: none;
 }
@@ -44,7 +48,7 @@ h3{
 
 
 @media(max-width: 768px){
-    main{
+    .list-group{
         display: flex;
         flex-direction: column;
         margin: 50px;
@@ -66,7 +70,7 @@ h3{
     padding: 20px 20px 0 20px;
 }
 
-main{
+.list-group {
     display: flex;
     justify-content: space-between;
     margin: 50px;
@@ -88,3 +92,48 @@ title{
     color: #6B8BD5;
 }
 
+#butt1{
+    padding: 10px;
+    border-radius: 10px;
+    background: none;
+    border: 2px solid #FF9842;
+    color: #FF9842;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#butt2 {
+    padding: 10px;
+    border-radius: 10px;
+    background: none;
+    border: 2px solid #814d21;
+    color: #814d21;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#butt1:hover{
+    background: #313131;
+    cursor: pointer;
+}
+
+#butt2:hover {
+    background: #313131;
+    border: 2px solid #FF9842;
+    color: #FF9842;
+    cursor: pointer;
+}
+
+#another-genre-link {
+    display: block;
+    margin-top: 5px;
+    font-size: 15px;
+    color: #4f4f4f;
+    text-decoration: underline;
+}
+
+#another-genre-link:hover{
+    color: #a1a1a1;
+    cursor: pointer;
+    transition: 0.3s;
+}

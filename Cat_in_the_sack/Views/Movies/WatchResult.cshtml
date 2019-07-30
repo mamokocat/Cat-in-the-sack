@@ -4,9 +4,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div style="text-align: center; margin: 0px auto">
-    <div style="font-size: 40px; color: #4c566c; opacity: 0.6; margin-bottom: 60px">You'll spend your evening watching...</div>
+    <div style="font-size: 40px; color: #4c566c; opacity: 0.6; margin: 20px">You'll spend your evening watching...</div>
     <div style="font-size: 50px; color: #6B8BD6; font-weight: 800">@ViewBag.ResultMovie ?</div>
 </div>
-   
+
+<div style="margin: 20px">
+    <button id="butt1">Yes!</button>
+    <button id="butt2" onclick="location.reload();">Um, no.</button>
+    <a href="/Movies/Index" id="another-genre-link">I'm not sure about this genre anymore...</a>
+</div>
 
 
