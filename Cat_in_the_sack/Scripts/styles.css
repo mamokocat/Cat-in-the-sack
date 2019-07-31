@@ -137,3 +137,7 @@ title{
     cursor: pointer;
     transition: 0.3s;
 }
+
+h2{font-size: 30px; margin-top: 20px; color: #fff;}
+
+#redirect{font-size: 20px; margin-top: 10px; color: #313131;}

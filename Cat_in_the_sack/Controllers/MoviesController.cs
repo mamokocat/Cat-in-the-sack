@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Cat_in_the_sack.Models;
+using System.Data.Entity.Validation;
+using System.Data.Entity.Infrastructure;
 
 namespace Cat_in_the_sack.Controllers
 {
@@ -23,19 +25,28 @@ namespace Cat_in_the_sack.Controllers
             return View();
         }
 
-        public ActionResult WatchResult(string genre)
+        public ActionResult WatchResult(string genre, string prevTitle="")
         {
             string title="";
             Random rndMovieIndex = new Random();
+            if (db.Movies.All(_movie => _movie.IsWatched == 1))
+            {
+                foreach (Movy movy in db.Movies)
+                {
+                    movy.IsWatched = 0;
+                }
+            }
+            db.SaveChanges();
             while (String.IsNullOrEmpty(title))
             {
-
-                Movy movie = db.Movies.ToList().ElementAt(rndMovieIndex.Next(1, db.Movies.ToList().Count()));
+                Movy movie = db.Movies.ToList().ElementAt(rndMovieIndex.Next(1, db.Movies.ToList().Count()));  
                 if( (movie.Genre==genre || genre=="Random" ) && movie.IsWatched==0)
                 {
                     title = movie.Title;
                 }
+                ViewBag.Id = movie.Id;
             }
+            ViewBag.Genre = genre;
             ViewBag.ResultMovie = title;
             return View();
         }
@@ -107,6 +118,18 @@ namespace Cat_in_the_sack.Controllers
                 return RedirectToAction("Index");
             }
             return View(movy);
+        }
+
+       
+        public ActionResult Watched(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Movies.Find(id).IsWatched = 1;
+                db.SaveChanges();
+                return View();
+            }
+            return View();
         }
 
         // GET: Movies/Delete/5
