@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Movies">
       <EntityTypeMapping TypeName="MoviesModel.Movy">
         <MappingFragment StoreEntitySet="Movies">
+          <ScalarProperty Name="IsPicked" ColumnName="IsPicked" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Genre" ColumnName="Genre" />
           <ScalarProperty Name="Title" ColumnName="Title" />

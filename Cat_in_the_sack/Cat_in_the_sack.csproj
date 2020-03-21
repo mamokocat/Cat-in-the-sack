@@ -197,6 +197,9 @@
     <Compile Include="Models\Movy.cs">
       <DependentUpon>MovieEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Table.cs">
+      <DependentUpon>MovieEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

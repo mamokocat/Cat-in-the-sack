@@ -6,8 +6,9 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Genre" Type="nvarchar" MaxLength="50" />
-    <Property Name="Title" Type="nvarchar" MaxLength="50" />
-    <Property Name="IsWatched" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsWatched" Type="int" />
+    <Property Name="IsPicked" Type="int" />
   </EntityType>
   <EntityContainer Name="MoviesModelStoreContainer">
     <EntitySet Name="Movies" EntityType="Self.Movies" Schema="dbo" store:Type="Tables" />

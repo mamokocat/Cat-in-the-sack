@@ -18,5 +18,6 @@ namespace Cat_in_the_sack.Models
         public string Genre { get; set; }
         public string Title { get; set; }
         public int IsWatched { get; set; }
+        public int IsPicked { get; set; }
     }
 }

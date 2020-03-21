@@ -27,8 +27,27 @@ namespace Cat_in_the_sack.Controllers
 
         public ActionResult WatchResult(string genre, string prevTitle="")
         {
+            foreach(Movy movy in db.Movies)
+            {
+                if(movy.Title == prevTitle)
+                {
+                    movy.IsPicked = 1;
+                }
+            }
+
+            db.SaveChanges();
+
             string title="";
             Random rndMovieIndex = new Random();
+
+            if (db.Movies.All(_movie => _movie.IsPicked == 1))
+            {
+                foreach (Movy movy in db.Movies)
+                {
+                    movy.IsPicked = 0;
+                }
+            }
+
             if (db.Movies.All(_movie => _movie.IsWatched == 1))
             {
                 foreach (Movy movy in db.Movies)
@@ -36,16 +55,21 @@ namespace Cat_in_the_sack.Controllers
                     movy.IsWatched = 0;
                 }
             }
+
             db.SaveChanges();
+
             while (String.IsNullOrEmpty(title))
             {
                 Movy movie = db.Movies.ToList().ElementAt(rndMovieIndex.Next(1, db.Movies.ToList().Count()));  
-                if( (movie.Genre==genre || genre=="Random" ) && movie.IsWatched==0)
+                
+                if( (movie.Genre==genre || genre=="Random" ) && movie.IsWatched==0 && movie.IsPicked == 0)
                 {
                     title = movie.Title;
                 }
+
                 ViewBag.Id = movie.Id;
             }
+
             ViewBag.Genre = genre;
             ViewBag.ResultMovie = title;
             return View();
